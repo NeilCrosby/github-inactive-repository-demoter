@@ -6,8 +6,6 @@
 // ==/UserScript==
 
 var elsProjectsList = document.getElementsByClassName('projects');
-console.log('elsProjectsList');
-console.log(elsProjectsList);
 
 if (elsProjectsList && elsProjectsList.length > 0) {
     var elsProjects = elsProjectsList[0].getElementsByTagName('li');
