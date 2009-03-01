@@ -10,13 +10,8 @@ var elsProjectsList = document.getElementsByClassName('projects');
 if (elsProjectsList && elsProjectsList.length > 0) {
     var elsProjects = elsProjectsList[0].getElementsByTagName('li');
 
-    var elsDemotedHeading = document.createElement('h1');
-    elsDemotedHeading.appendChild(document.createTextNode('Not touched in the last month'));
-    elsProjectsList[0].parentNode.appendChild(elsDemotedHeading);
-
-    var elsDemoted = document.createElement('ul');
-    elsDemoted.className = 'projects';
-    elsProjectsList[0].parentNode.appendChild(elsDemoted);
+    var elDemotedHeading = null;
+    var elsDemoted = null;
 
     for ( var i=0,len=elsProjects.length; i < len; i++) {
         var elsDate = elsProjects[i].getElementsByClassName('relatize');
@@ -30,6 +25,16 @@ if (elsProjectsList && elsProjectsList.length > 0) {
         
             // more than 30 days since the last update?
             if ( diffDate > 1000 * 60 * 60 * 24 * 30) {
+                if ( null === elDemotedHeading ) {
+                    elDemotedHeading = document.createElement('h1');
+                    elDemotedHeading.appendChild(document.createTextNode('Not touched in the last month'));
+                    elsProjectsList[0].parentNode.appendChild(elDemotedHeading);
+
+                    elsDemoted = document.createElement('ul');
+                    elsDemoted.className = 'projects';
+                    elsProjectsList[0].parentNode.appendChild(elsDemoted);
+                }
+                
                 elsDemoted.appendChild(elsProjects[i]);
                 i--;
             }
@@ -37,4 +42,3 @@ if (elsProjectsList && elsProjectsList.length > 0) {
         }
     }
 }
-
