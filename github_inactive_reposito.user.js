@@ -2,7 +2,7 @@
 // @name           GitHub Inactive Repository Demoter
 // @namespace      http://projects.thecodetrain.co.uk
 // @description    Visually demotes inactive repositories on a user's page on GitHub
-// @include        http://github.com/
+// @include        http://github.com/*
 // ==/UserScript==
 
 var elsProjectsList = document.getElementsByClassName('projects');
