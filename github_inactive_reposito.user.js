@@ -26,6 +26,8 @@ if (elsProjectsList && elsProjectsList.length > 0) {
             // more than 30 days since the last update?
             if ( diffDate > 1000 * 60 * 60 * 24 * 30) {
                 if ( null === elDemotedHeading ) {
+                    // It's an h1 because GitHub uses h1s all over the shop,
+                    // and I've just looking for some visual consistency here.
                     elDemotedHeading = document.createElement('h1');
                     elDemotedHeading.appendChild(document.createTextNode('Not touched in the last month'));
                     elsProjectsList[0].parentNode.appendChild(elDemotedHeading);
@@ -35,6 +37,9 @@ if (elsProjectsList && elsProjectsList.length > 0) {
                     elsProjectsList[0].parentNode.appendChild(elsDemoted);
                 }
                 
+                // because we're removing something from the original 
+                // "elsProjects" list, it gets shorter, and we need to reduce
+                // the counter "i" to compensate.
                 elsDemoted.appendChild(elsProjects[i]);
                 i--;
             }
